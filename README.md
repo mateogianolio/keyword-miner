@@ -1,6 +1,6 @@
 # Keyword miner
 
-Obtain a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner), [html-to-text](https://github.com/werk85/node-html-to-text) and [request](https://github.com/request/request) for text parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup.
+Obtain a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner), [html-to-text](https://github.com/werk85/node-html-to-text) and [request](https://github.com/request/request) for text parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup ([SOWPODS](https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt)).
 
 ```bash
 $ npm install keyword-miner
