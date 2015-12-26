@@ -1,0 +1,17 @@
+{
+  "name": "keyword-miner",
+  "version": "0.1.0",
+  "description": "Mine keywords from websites",
+  "main": "miner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateo Gianolio",
+  "license": "MIT",
+  "dependencies": {
+    "html-to-text": "^1.5.1",
+    "level": "^1.4.0",
+    "request": "^2.67.0",
+    "text-miner": "^1.0.5"
+  }
+}
