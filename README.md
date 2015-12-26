@@ -17,10 +17,10 @@ var miner = require('keyword-miner');
 var options = {
   site: 'https://en.wikipedia.org/wiki/Data_mining',
 
-  // default 5
+  // only include words with at least n occurences, default 5
   threshold: 5,
 
-  // default 0 (no limit)
+  // limit output count, default 0 (no limit)
   limit: 20,
 
   // filter keywords with SOWPODS dictionary, default true
