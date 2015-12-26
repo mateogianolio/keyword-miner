@@ -5,7 +5,7 @@
       text = require('html-to-text'),
       miner = require('text-miner'),
       corpus = new miner.Corpus([]),
-      dictionary = require('levelup')('./dictionary'),
+      dictionary = require('levelup')(__dirname + '/dictionary'),
       freqTerms,
       terms,
       words;
