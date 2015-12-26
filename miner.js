@@ -1,8 +1,7 @@
 (function() {
   'use strict';
 
-  var fs = require('fs'),
-      request = require('request'),
+  var request = require('request'),
       text = require('html-to-text'),
       miner = require('text-miner'),
       corpus = new miner.Corpus([]),
@@ -25,6 +24,7 @@
   function query(options, done) {
     options = typeof options === 'string' ? { site: options } : options;
     options.threshold = options.threshold || 5;
+    options.dictionary = options.dictionary === undefined ? true : options.dictionary;
 
     request(
       options.site,
@@ -47,6 +47,14 @@
 
         terms = new miner.Terms(corpus);
         freqTerms = terms.findFreqTerms(options.threshold);
+
+        if (!options.dictionary)
+          return done(
+            freqTerms
+              .sort(ascending)
+              .filter(limit(options.limit)
+            )
+          );
 
         words = [];
         freqTerms.forEach(
