@@ -2,7 +2,6 @@
   'use strict';
 
   var request = require('request'),
-      text = require('html-to-text'),
       miner = require('text-miner'),
       dictionary = require('levelup')(__dirname + '/dictionary');
 
@@ -32,7 +31,7 @@
           return new Error('request failed');
 
         var corpus = new miner.Corpus([]);
-        corpus.addDoc(text.fromString(body, { ignoreHref: true }));
+        corpus.addDoc(body.replace(/<[^>]*>/g, ''));
         corpus
           .trim()
           .toLower()

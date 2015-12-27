@@ -9,7 +9,6 @@
   "author": "Mateo Gianolio",
   "license": "MIT",
   "dependencies": {
-    "html-to-text": "^1.5.1",
     "level": "^1.4.0",
     "request": "^2.67.0",
     "text-miner": "^1.0.5"
