@@ -31,7 +31,7 @@
           return done(error);
 
         var corpus = new miner.Corpus([]);
-        corpus.addDoc(body.replace(/<[^>]*>/g, ''));
+        corpus.addDoc(body.replace(/<(?:.|\n)*?>/gm, ''));
         corpus
           .trim()
           .toLower()
