@@ -14,5 +14,13 @@
   console.log('threshold:', options.threshold);
   console.log('limit:', options.limit);
 
-  miner(options, words => console.log('words:', words));
+  miner(
+    options,
+    (error, words) => {
+      if (error)
+        throw error;
+
+      console.log('words:', words);
+    }
+  );
 }());

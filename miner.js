@@ -18,7 +18,7 @@
 
   function query(options, done) {
     if (!options.site)
-      return;
+      return done(new Error('URL invalid: ' + options.site));
 
     options = typeof options === 'string' ? { site: options } : options;
     options.threshold = options.threshold || 5;
@@ -28,7 +28,7 @@
       options.site,
       (error, response, body) => {
         if (error || response.statusCode !== 200)
-          return new Error('request failed');
+          return done(error);
 
         var corpus = new miner.Corpus([]);
         corpus.addDoc(body.replace(/<[^>]*>/g, ''));
@@ -45,12 +45,7 @@
             freqTerms = terms.findFreqTerms(options.threshold);
 
         if (!options.dictionary)
-          return done(
-            freqTerms
-              .sort(ascending)
-              .filter(limit(options.limit)
-            )
-          );
+          return done(null, freqTerms.sort(ascending).filter(limit(options.limit)));
 
         var words = [];
         freqTerms.forEach(
@@ -67,7 +62,7 @@
                 .sort(ascending)
                 .filter(limit(options.limit));
 
-              done(words);
+              done(null, words);
             });
           }
         );

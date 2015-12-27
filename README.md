@@ -57,7 +57,11 @@ var options = {
 // call function and print results when done
 miner(
   options,
-  words =>
-    console.log('words:', words)
+  (error, words) => {
+    if (error)
+      throw error;
+
+    console.log('words:', words);
+  }
 );
 ```
