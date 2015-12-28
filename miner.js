@@ -24,7 +24,7 @@
   function query(options, done) {
     if (!options)
       return done(new Error('options/url is null'));
-      
+
     options =
       typeof options === 'string' ?
         { site: options } :
@@ -43,13 +43,12 @@
 
     protocol.get(
       options.site,
-      (response) => {
+      function (response) {
         var body = '',
             corpus = new miner.Corpus([]),
             words = [],
             terms,
             dom;
-        response.on('error', done);
         response.on('data', data => body += data);
         response.on('end', () => {
           dom = cheerio.load(body);
@@ -73,7 +72,7 @@
           );
         });
       }
-    );
+    ).on('error', done);
   }
 
   module.exports = query;
