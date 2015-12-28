@@ -1,6 +1,6 @@
 # keyword-miner
 
-Obtain a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner), [request](https://github.com/request/request) and [cheerio](https://github.com/cheeriojs/cheerio) for HTML parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup ([SOWPODS](https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt)).
+Extract a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner) and [cheerio](https://github.com/cheeriojs/cheerio) for HTML/text parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup ([SOWPODS](https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt)).
 
 Top 20 keywords for https://en.wikipedia.org/wiki/Data_mining:
 
