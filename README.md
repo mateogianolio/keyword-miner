@@ -1,30 +1,30 @@
 # keyword-miner
 
-Obtain a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner) and [request](https://github.com/request/request) for HTML parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup ([SOWPODS](https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt)).
+Obtain a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner), [request](https://github.com/request/request) and [cheerio](https://github.com/cheeriojs/cheerio) for HTML parsing and [leveldb](https://github.com/Level/levelup) for dictionary lookup ([SOWPODS](https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt)).
 
 Top 20 keywords for https://en.wikipedia.org/wiki/Data_mining:
 
 ```
-words: [ { word: 'data', count: 258 },
-  { word: 'mining', count: 155 },
+words: [ { word: 'data', count: 260 },
+  { word: 'mining', count: 154 },
   { word: 'learning', count: 51 },
-  { word: 'software', count: 43 },
-  { word: 'information', count: 36 },
-  { word: 'analysis', count: 35 },
-  { word: 'machine', count: 34 },
-  { word: 'conference', count: 32 },
-  { word: 'knowledge', count: 25 },
-  { word: 'edit', count: 25 },
-  { word: 'discovery', count: 23 },
+  { word: 'software', count: 41 },
+  { word: 'conference', count: 35 },
+  { word: 'information', count: 35 },
+  { word: 'machine', count: 33 },
+  { word: 'analysis', count: 33 },
+  { word: 'knowledge', count: 28 },
+  { word: 'discovery', count: 25 },
   { word: 'language', count: 22 },
-  { word: 'patterns', count: 20 },
-  { word: 'analytics', count: 19 },
-  { word: 'process', count: 18 },
+  { word: 'patterns', count: 19 },
+  { word: 'research', count: 18 },
   { word: 'privacy', count: 17 },
-  { word: 'processing', count: 15 },
-  { word: 'research', count: 15 },
+  { word: 'process', count: 17 },
+  { word: 'analytics', count: 17 },
   { word: 'set', count: 15 },
-  { word: 'intelligence', count: 14 } ]
+  { word: 'computing', count: 14 },
+  { word: 'database', count: 14 },
+  { word: 'algorithms', count: 14 } ]
 ```
 
 ### Usage
