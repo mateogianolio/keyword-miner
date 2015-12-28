@@ -22,6 +22,9 @@
   }
 
   function query(options, done) {
+    if (!options)
+      return done(new Error('options/url is null'));
+      
     options =
       typeof options === 'string' ?
         { site: options } :
