@@ -18,7 +18,7 @@
   }
 
   function limit(max) {
-    return (term, index) => index < max;
+    return (term, index) => max ? index < max : true;
   }
 
   function query(options, done) {
@@ -27,7 +27,8 @@
         { site: options } :
         options;
 
-    options.threshold = options.threshold || 5;
+    options.threshold = options.threshold || 0;
+    options.limit = options.limit || 0;
 
     if (!options.site)
       return done(new Error('URL invalid: ' + options.site));

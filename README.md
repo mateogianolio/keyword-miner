@@ -44,7 +44,7 @@ var miner = require('keyword-miner');
 var options = {
   site: 'https://en.wikipedia.org/wiki/Data_mining',
 
-  // only include words with at least n occurences, default 5
+  // only include words with at least n occurences, default 0 (no threshold)
   threshold: 5,
 
   // limit output count, default 0 (no limit)
