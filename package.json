@@ -1,6 +1,6 @@
 {
   "name": "keyword-miner",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Extract a list of keywords from a website, sorted by word count.",
   "main": "miner.js",
   "scripts": {
@@ -10,8 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.19.0",
-    "level": "^1.4.0",
-    "request": "^2.67.0",
     "text-miner": "^1.0.5"
   },
   "repository": {

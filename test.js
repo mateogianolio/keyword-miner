@@ -6,8 +6,7 @@
   var options = {
     site: 'https://en.wikipedia.org/wiki/Data_mining',
     threshold: 5,
-    limit: 20,
-    dictionary: true
+    limit: 20
   };
 
   console.log('site:', options.site);

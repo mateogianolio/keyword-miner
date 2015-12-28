@@ -4,8 +4,7 @@
   var http = require('http'),
       https = require('https'),
       miner = require('text-miner'),
-      cheerio = require('cheerio'),
-      dictionary = require('levelup')(__dirname + '/dictionary');
+      cheerio = require('cheerio');
 
   function ascending(a, b) {
     return a.count > b.count ?
@@ -14,14 +13,21 @@
         1 : 0;
   }
 
+  function validate(term) {
+    return /[A-Za-z]/g.test(term.word);
+  }
+
   function limit(max) {
     return (term, index) => index < max;
   }
 
   function query(options, done) {
-    options = typeof options === 'string' ? { site: options } : options;
+    options =
+      typeof options === 'string' ?
+        { site: options } :
+        options;
+
     options.threshold = options.threshold || 5;
-    options.dictionary = options.dictionary === undefined ? true : options.dictionary;
 
     if (!options.site)
       return done(new Error('URL invalid: ' + options.site));
@@ -53,37 +59,13 @@
             .removeDigits()
             .removeWords(miner.STOPWORDS.EN);
 
-          terms = new miner.Terms(corpus)
-            .findFreqTerms(options.threshold);
-            
-          if (!options.dictionary)
-            return done(
-              null,
-              terms
-                .sort(ascending)
-                .filter(limit(options.limit))
-            );
-
-          terms.forEach(
-            (term, index) => {
-              dictionary.get(
-                term.word,
-                (error, value) => {
-                  if (!error)
-                    words.push(term);
-
-                  if (index !== terms.length - 1)
-                    return;
-
-                  options.limit = options.limit || words.length;
-                  words = words
-                    .sort(ascending)
-                    .filter(limit(options.limit));
-
-                  done(null, words);
-                }
-              );
-            }
+          done(
+            null,
+            new miner.Terms(corpus)
+              .findFreqTerms(options.threshold)
+              .sort(ascending)
+              .filter(validate)
+              .filter(limit(options.limit))
           );
         });
       }
