@@ -14,7 +14,7 @@
   }
 
   function validate(term) {
-    return /[A-Za-z]/g.test(term.word);
+    return /^[a-zA-Z]+$/.test(term.word);
   }
 
   function limit(max) {
