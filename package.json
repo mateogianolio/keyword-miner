@@ -1,6 +1,6 @@
 {
   "name": "keyword-miner",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Extract a list of keywords from a website, sorted by word count.",
   "main": "miner.js",
   "scripts": {
