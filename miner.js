@@ -35,6 +35,8 @@
 
     options.threshold = options.threshold || 0;
     options.limit = options.limit || 0;
+    options.element = options.element || 'body';
+    options.exclude = options.exclude || [];
 
     var protocol =
       options.site.indexOf('https://') !== -1 ?
@@ -52,7 +54,7 @@
         response.on('data', data => body += data);
         response.on('end', () => {
           dom = cheerio.load(body);
-          corpus.addDoc(dom('body').text());
+          corpus.addDoc(dom(options.element).text());
           corpus
             .trim()
             .toLower()
@@ -68,6 +70,7 @@
               .findFreqTerms(options.threshold)
               .sort(ascending)
               .filter(validate)
+              .filter(term => options.exclude.indexOf(term.word) === -1)
               .filter(limit(options.limit))
           );
         });

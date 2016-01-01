@@ -6,7 +6,9 @@
   var options = {
     site: 'https://en.wikipedia.org/wiki/Data_mining',
     threshold: 5,
-    limit: 20
+    limit: 20,
+    element: 'body',
+    exclude: []
   };
 
   console.log('site:', options.site);

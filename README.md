@@ -48,7 +48,13 @@ var options = {
   threshold: 5,
 
   // limit output count, default 0 (no limit)
-  limit: 20
+  limit: 20,
+
+  // css element(s) to get keywords from, default 'body'
+  element: 'body',
+
+  // exclude keywords, default []
+  exclude: []
 };
 
 // call function and print results when done
