@@ -1,4 +1,4 @@
-# keyword-miner
+# keyword miner
 
 Extract a list of keywords from a website, sorted by word count. Uses [text-miner](https://github.com/Planeshifter/text-miner) and [cheerio](https://github.com/cheeriojs/cheerio) for HTML/text parsing.
 
