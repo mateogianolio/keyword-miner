@@ -17,7 +17,7 @@
 
   miner(
     options,
-    (error, words) => {
+    function (error, words) {
       if (error)
         throw error;
 

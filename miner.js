@@ -18,7 +18,9 @@
   }
 
   function limit(max) {
-    return (term, index) => max ? index < max : true;
+    return function (term, index) {
+      return max ? index < max : true;
+    };
   }
 
   function query(options, done) {
@@ -51,8 +53,8 @@
             words = [],
             terms,
             dom;
-        response.on('data', data => body += data);
-        response.on('end', () => {
+        response.on('data', function (data) { body += data; });
+        response.on('end', function () {
           dom = cheerio.load(body);
           corpus.addDoc(dom(options.element).text());
           corpus
@@ -70,7 +72,9 @@
               .findFreqTerms(options.threshold)
               .sort(ascending)
               .filter(validate)
-              .filter(term => options.exclude.indexOf(term.word) === -1)
+              .filter(function (term) {
+                return options.exclude.indexOf(term.word) === -1;
+              })
               .filter(limit(options.limit))
           );
         });
