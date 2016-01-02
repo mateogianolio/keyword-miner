@@ -64,7 +64,8 @@
             .removeInterpunctuation()
             .removeNewlines()
             .removeDigits()
-            .removeWords(miner.STOPWORDS.EN);
+            .removeWords(miner.STOPWORDS.EN)
+            .stem();
 
           done(
             null,
