@@ -39,6 +39,7 @@
     options.limit = options.limit || 0;
     options.element = options.element || 'body';
     options.exclude = options.exclude || [];
+    options.ignoreInlineCSS = options.ignoreInlineCSS || true;
 
     var protocol =
       options.site.indexOf('https://') !== -1 ?
@@ -52,11 +53,19 @@
             corpus = new miner.Corpus([]),
             words = [],
             terms,
-            dom;
+            dom,
+            doc;
         response.on('data', function (data) { body += data; });
         response.on('end', function () {
           dom = cheerio.load(body);
-          corpus.addDoc(dom(options.element).text());
+          if (options.ignoreInlineCSS) {
+            doc = dom(options.element).html().replace(/style=(['"])[^\1]*?\1/ig, '').replace(/<style[^<]*?<\/style>/ig, '');
+            doc = dom(doc).text();
+          } else {
+            doc = dom(options.element).text();
+          }
+
+          corpus.addDoc(doc);
           corpus
             .trim()
             .toLower()
